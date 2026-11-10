@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tural & Nərmin · Toy dəvətnaməsi</title>
+<meta property="og:title" content="Tural & Nərmin · Toy dəvətnaməsi">
+<meta property="og:description" content="26 dekabr 2026 · Sizi toyumuza dəvət edirik">
+<style>
+@font-face{font-family:'GV';src:url(../assets/gv.woff2) format('woff2');font-display:block}
+@font-face{font-family:'CG';src:url(../assets/cg.woff2) format('woff2');font-weight:300 700;font-display:block}
+:root{--navy:#070e28;--navy2:#12204e;--gold:#e8be6e;--gold2:#f6dfa0;--goldd:#c4923e;--ivory:#f0ece2}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--navy);color:var(--ivory);font-family:'CG',Georgia,serif;-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden}
+body.locked{overflow:hidden;height:100vh}
+.gold{background:linear-gradient(180deg,var(--gold2) 0%,var(--gold) 45%,var(--goldd) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 40%,#16265c 0%,#0a1336 45%,#040820 100%);z-index:-2}
+#stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
+
+/* ---------- envelope ---------- */
+#intro{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:50;transition:opacity 1s ease .9s, visibility 0s 1.9s}
+#intro.open{opacity:0;visibility:hidden}
+.env-hint{font-size:20px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:34px;opacity:.9}
+.env-names{font-family:'GV';font-size:46px;margin-top:34px}
+.envelope{position:relative;width:300px;height:200px;perspective:900px;cursor:pointer}
+.env-body{position:absolute;inset:0;background:linear-gradient(160deg,#1b2d68,#0e1a44);border:1.5px solid var(--gold);border-radius:6px;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.env-body:before,.env-body:after{content:"";position:absolute;bottom:0;width:0;height:0;border-bottom:110px solid rgba(232,190,110,.10)}
+.env-body:before{left:0;border-right:150px solid transparent}
+.env-body:after{right:0;border-left:150px solid transparent}
+.flap{position:absolute;left:0;top:0;width:100%;height:120px;transform-origin:top;transition:transform 1s cubic-bezier(.6,.05,.3,1);z-index:3}
+.flap svg{width:100%;height:100%;display:block}
+#intro.open .flap{transform:rotateX(180deg)}
+.seal{position:absolute;left:50%;top:92px;width:64px;height:64px;margin-left:-32px;border-radius:50%;z-index:4;
+  background:radial-gradient(circle at 35% 30%,var(--gold2),var(--gold) 45%,var(--goldd));display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,.45);animation:pulse 2s ease-in-out infinite;transition:transform .6s,opacity .6s}
+#intro.open .seal{transform:scale(1.6);opacity:0}
+.seal svg{width:30px;height:38px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(232,190,110,.55),0 4px 14px rgba(0,0,0,.45)}50%{box-shadow:0 0 0 16px rgba(232,190,110,0),0 4px 14px rgba(0,0,0,.45)}}
+.letter{position:absolute;left:18px;right:18px;top:16px;height:170px;background:var(--ivory);border-radius:4px;z-index:2;transition:transform 1.1s cubic-bezier(.5,0,.2,1) .45s;display:flex;align-items:center;justify-content:center}
+.letter span{font-family:'GV';font-size:40px;color:#9a6f2a}
+#intro.open .letter{transform:translateY(-130px)}
+
+/* ---------- content ---------- */
+main{opacity:0;transition:opacity 1.2s ease 1.4s}
+main.show{opacity:1}
+section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 28px;position:relative}
+.frame{position:fixed;inset:14px;border:1px solid rgba(232,190,110,.55);pointer-events:none;z-index:5;border-radius:2px}
+.frame:after{content:"";position:absolute;inset:6px;border:1px solid rgba(232,190,110,.25)}
+.kicker{font-size:17px;line-height:1.7;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.names{font-family:'GV';font-size:84px;line-height:1.05;margin:18px 0 6px}
+.amp{font-family:'GV';font-size:48px;display:block;margin:-6px 0}
+.date-big{font-size:30px;letter-spacing:.14em;font-weight:600;margin-top:22px}
+.sub{font-size:22px;opacity:.85;margin-top:6px}
+.buta{width:56px;height:72px;margin-bottom:10px}
+.divider{display:flex;align-items:center;gap:12px;width:240px;margin:26px auto}
+.divider i{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.divider b{width:9px;height:9px;background:var(--gold);transform:rotate(45deg)}
+h2{font-family:'GV';font-weight:400;font-size:54px;margin-bottom:8px}
+.lead{font-size:23px;line-height:1.45;max-width:340px;opacity:.92}
+
+.cd{display:flex;gap:10px;margin-top:30px}
+.cd div{width:74px;padding:14px 0 10px;border:1px solid rgba(232,190,110,.5);border-radius:10px;background:rgba(255,255,255,.03)}
+.cd b{display:block;font-size:36px;font-weight:600}
+.cd small{font-size:13px;letter-spacing:.15em;text-transform:uppercase;opacity:.75}
+
+.timeline{margin-top:26px;text-align:left;width:100%;max-width:330px}
+.ti{display:flex;gap:18px;padding:14px 0;border-bottom:1px solid rgba(232,190,110,.18)}
+.ti time{font-size:24px;font-weight:600;min-width:70px}
+.ti span{font-size:22px}
+
+.btn{display:inline-block;margin-top:24px;padding:15px 30px;border-radius:40px;font-family:'CG';font-size:20px;font-weight:700;letter-spacing:.05em;
+  background:linear-gradient(180deg,var(--gold2),var(--gold) 50%,var(--goldd));color:var(--navy);border:0;text-decoration:none;cursor:pointer;box-shadow:0 6px 20px rgba(232,190,110,.25)}
+.btn.ghost{background:transparent;color:var(--gold);border:1.5px solid var(--gold);box-shadow:none}
+.venue{font-size:30px;font-weight:600;margin-top:10px}
+
+form{width:100%;max-width:330px;margin-top:22px}
+input{width:100%;padding:15px 16px;border-radius:12px;border:1px solid rgba(232,190,110,.5);background:rgba(255,255,255,.04);color:var(--ivory);font-family:'CG';font-size:21px;outline:none}
+input::placeholder{color:rgba(240,236,226,.5)}
+.choice{display:flex;gap:10px;margin-top:12px}
+.choice button{flex:1;padding:14px 6px;border-radius:12px;border:1px solid rgba(232,190,110,.5);background:transparent;color:var(--ivory);font-family:'CG';font-size:19px;font-weight:600;cursor:pointer;transition:.25s}
+.choice button.on{background:var(--gold);color:var(--navy);border-color:var(--gold)}
+.guests{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding:10px 14px;border:1px solid rgba(232,190,110,.3);border-radius:12px;font-size:20px}
+.guests button{width:38px;height:38px;border-radius:50%;border:1px solid var(--gold);background:transparent;color:var(--gold);font-size:22px;cursor:pointer}
+.guests b{font-size:24px;min-width:30px;display:inline-block}
+#thanks{display:none;margin-top:26px;padding:22px;border:1px solid var(--gold);border-radius:14px;background:rgba(232,190,110,.08);font-size:22px;line-height:1.4;max-width:330px}
+#thanks.show{display:block;animation:pop .6s cubic-bezier(.3,1.5,.5,1)}
+@keyframes pop{from{transform:scale(.8);opacity:0}to{transform:none;opacity:1}}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+footer{padding:60px 20px 80px;text-align:center}
+.credit{font-size:15px;opacity:.6;margin-top:26px;letter-spacing:.05em}
+
+#music{position:fixed;right:24px;bottom:24px;width:50px;height:50px;border-radius:50%;border:1px solid var(--gold);background:rgba(7,14,40,.8);color:var(--gold);z-index:20;display:none;align-items:center;justify-content:center;cursor:pointer;font-size:20px}
+#music.show{display:flex}
+#music.on span{animation:spin 4s linear infinite;display:inline-block}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body class="locked">
+<div class="bg"></div>
+<canvas id="stars"></canvas>
+
+<div id="intro">
+  <div class="env-hint">Sizə dəvətnamə var</div>
+  <div class="envelope" id="env" role="button" aria-label="Dəvətnaməni aç">
+    <div class="env-body"></div>
+    <div class="letter"><span>Tural & Nərmin</span></div>
+    <div class="flap"><svg viewBox="0 0 300 120" preserveAspectRatio="none"><path d="M0 0 H300 L150 118 Z" fill="#1d3172" stroke="#e8be6e" stroke-width="1.5"/></svg></div>
+    <div class="seal"><svg viewBox="0 0 110 140"><path d="M60.0 132.0 C8.0 132.0 4.0 76.0 30.0 44.0 C48.0 22.0 82.0 4.0 102.0 18.0 C86.0 22.0 74.0 38.0 78.0 58.0 C82.0 76.0 106.0 92.0 94.0 114.0 C86.0 128.0 74.0 132.0 60.0 132.0Z" fill="none" stroke="#070e28" stroke-width="9"/></svg></div>
+  </div>
+  <div class="env-names gold">Tural & Nərmin</div>
+  <div class="sub" style="margin-top:6px;opacity:.7">Açmaq üçün möhürə toxunun</div>
+</div>
+
+<div class="frame"></div>
+<main id="main">
+  <section id="hero">
+    <svg class="buta reveal" viewBox="0 0 110 140"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6dfa0"/><stop offset=".5" stop-color="#e8be6e"/><stop offset="1" stop-color="#c4923e"/></linearGradient></defs><path d="M60.0 132.0 C8.0 132.0 4.0 76.0 30.0 44.0 C48.0 22.0 82.0 4.0 102.0 18.0 C86.0 22.0 74.0 38.0 78.0 58.0 C82.0 76.0 106.0 92.0 94.0 114.0 C86.0 128.0 74.0 132.0 60.0 132.0Z" fill="none" stroke="url(#g)" stroke-width="6"/><circle cx="58" cy="104" r="9" fill="url(#g)"/></svg>
+    <div class="kicker reveal">Toy mərasimimizə<br>dəvət edirik</div>
+    <div class="names gold reveal">Tural<span class="amp">&</span>Nərmin</div>
+    <div class="divider reveal"><i></i><b></b><i></i></div>
+    <div class="date-big gold reveal">26 · 12 · 2026</div>
+    <div class="sub reveal">Şənbə, saat 18:00</div>
+  </section>
+
+  <section id="count">
+    <h2 class="gold reveal">Toyumuza qalıb</h2>
+    <div class="cd reveal" id="cd">
+      <div><b class="gold" id="d">0</b><small>gün</small></div>
+      <div><b class="gold" id="h">0</b><small>saat</small></div>
+      <div><b class="gold" id="m">0</b><small>dəq</small></div>
+      <div><b class="gold" id="s">0</b><small>san</small></div>
+    </div>
+    <a class="btn ghost reveal" id="cal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Tural%20%26%20N%C9%99rmin%20toyu&dates=20261226T140000Z/20261226T200000Z&location=Q%C4%B1z%C4%B1lg%C3%BCl%20%C5%9Fadl%C4%B1q%20saray%C4%B1%2C%20Bak%C4%B1">Təqvimə əlavə et</a>
+  </section>
+
+  <section id="program">
+    <h2 class="gold reveal">Günün proqramı</h2>
+    <div class="timeline">
+      <div class="ti reveal"><time class="gold">17:30</time><span>Qonaqların qarşılanması</span></div>
+      <div class="ti reveal"><time class="gold">18:00</time><span>Bəy və gəlinin girişi</span></div>
+      <div class="ti reveal"><time class="gold">19:00</time><span>Şam yeməyi</span></div>
+      <div class="ti reveal"><time class="gold">21:30</time><span>Toy tortu</span></div>
+    </div>
+  </section>
+
+  <section id="place">
+    <h2 class="gold reveal">Məkan</h2>
+    <div class="venue reveal">«Qızılgül» şadlıq sarayı</div>
+    <div class="sub reveal">Bakı şəhəri</div>
+    <a class="btn reveal" href="https://www.google.com/maps/search/?api=1&query=Baku%20wedding%20palace" target="_blank" rel="noopener">📍 Xəritədə aç</a>
+  </section>
+
+  <section id="rsvp">
+    <h2 class="gold reveal">Gələcəksiniz?</h2>
+    <p class="lead reveal">Zəhmət olmasa, 15 dekabra qədər cavab verin</p>
+    <form id="f" class="reveal" autocomplete="off">
+      <input id="nm" placeholder="Adınız və soyadınız">
+      <div class="choice"><button type="button" data-v="yes" id="yes">Gələcəyəm</button><button type="button" data-v="no" id="no">Gələ bilməyəcəyəm</button></div>
+      <div class="guests">Neçə nəfər? <span><button type="button" id="minus">−</button> <b id="gn">1</b> <button type="button" id="plus">+</button></span></div>
+      <button class="btn" type="submit" id="send" style="width:100%">Cavabı göndər</button>
+    </form>
+    <div id="thanks"></div>
+  </section>
+
+  <footer>
+    <svg class="buta" viewBox="0 0 110 140"><path d="M60.0 132.0 C8.0 132.0 4.0 76.0 30.0 44.0 C48.0 22.0 82.0 4.0 102.0 18.0 C86.0 22.0 74.0 38.0 78.0 58.0 C82.0 76.0 106.0 92.0 94.0 114.0 C86.0 128.0 74.0 132.0 60.0 132.0Z" fill="none" stroke="#e8be6e" stroke-width="6"/></svg>
+    <p class="lead" style="margin:10px auto 0">Bu xoşbəxt günümüzdə sizi aramızda görməkdən şərəf duyarıq</p>
+    <div class="names gold" style="font-size:44px">Hörmətlə,</div>
+    <div class="sub">Tural və Nərminin ailələri</div>
+    <div class="credit">Dəvətnamə: <span class="gold">Bumerang</span> · @bumerang.studio</div>
+  </footer>
+</main>
+
+<button id="music" aria-label="Musiqi"><span><svg width="20" height="20" viewBox="0 0 24 24" fill="#e8be6e"><path d="M9 18.5a2.5 2.5 0 1 1-2-2.45V5l12-2v12.5a2.5 2.5 0 1 1-2-2.45V7.2L9 8.6z"/></svg></span></button>
+<audio id="aud" loop preload="auto" src="../assets/music.m4a"></audio>
+
+<script>
+(function(){
+  // stars
+  const c=document.getElementById('stars'),x=c.getContext('2d');let W,H,S=[];
+  function rs(){W=c.width=innerWidth*devicePixelRatio;H=c.height=innerHeight*devicePixelRatio;S=[];for(let i=0;i<70;i++)S.push({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*1.6+.6)*devicePixelRatio,v:(Math.random()*.25+.08)*devicePixelRatio,p:Math.random()*6.28})}
+  rs();addEventListener('resize',rs);
+  (function f(t){x.clearRect(0,0,W,H);for(const s of S){s.y-=s.v;if(s.y<0)s.y=H;const a=.35+.65*(.5+.5*Math.sin(t/600+s.p));x.globalAlpha=a;x.fillStyle='#f6dfa0';x.beginPath();x.arc(s.x,s.y,s.r,0,6.28);x.fill()}requestAnimationFrame(f)})(0);
+
+  // envelope
+  const intro=document.getElementById('intro'),aud=document.getElementById('aud'),mb=document.getElementById('music');
+  let opened=false;
+  function open(){if(opened)return;opened=true;intro.classList.add('open');document.body.classList.remove('locked');
+    document.getElementById('main').classList.add('show');mb.classList.add('show');
+    try{const p=aud.play();if(p&&p.then)p.then(()=>mb.classList.add('on')).catch(()=>{})}catch(e){}
+    setTimeout(()=>document.querySelectorAll('#hero .reveal').forEach((e,i)=>setTimeout(()=>e.classList.add('in'),i*260)),1500);
+    setTimeout(tour,5200)}
+  // auto tour: scroll section by section until the RSVP form; any touch/scroll by the guest stops it
+  let touring=false,stopTour=false,anim=0;
+  function smooth(to,ms){return new Promise(r=>{const y0=scrollY,t0=performance.now();
+    (function f(t){if(stopTour)return r();const p=Math.min(1,(t-t0)/ms),e=p<.5?4*p*p*p:1-Math.pow(-2*p+2,3)/2;
+      touring=true;scrollTo(0,y0+(to-y0)*e);if(p<1)anim=requestAnimationFrame(f);else{touring=false;r()}})(t0)})}
+  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+  async function tour(){for(const [id,hold] of [['count',4200],['program',4200],['place',3800],['rsvp',0]]){
+      if(stopTour)return;const el=document.getElementById(id);await smooth(el.getBoundingClientRect().top+scrollY,1600);
+      if(stopTour)return;await wait(hold)}}
+  function halt(){if(!stopTour&&opened){stopTour=true;cancelAnimationFrame(anim)}}
+  ['wheel','touchstart','keydown','mousedown'].forEach(ev=>addEventListener(ev,e=>{if(e.target.closest&&e.target.closest('#intro'))return;halt()},{passive:true}));
+  document.getElementById('env').addEventListener('click',open);
+  mb.addEventListener('click',()=>{if(aud.paused){aud.play().catch(()=>{});mb.classList.add('on')}else{aud.pause();mb.classList.remove('on')}});
+
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting&&opened&&e.target.closest('section')?.id!=='hero'){const sib=[...e.target.parentElement.querySelectorAll('.reveal')];setTimeout(()=>e.target.classList.add('in'),Math.max(0,sib.indexOf(e.target))*150)}}),{threshold:.2});
+  document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+  document.querySelectorAll('footer .buta,footer .lead,footer .names,footer .sub,footer .credit').forEach(e=>{e.classList.add('reveal');io.observe(e)});
+
+  // countdown
+  const T=new Date('2026-12-26T18:00:00+04:00').getTime();
+  function tick(){let d=Math.max(0,T-Date.now());const D=Math.floor(d/864e5);d-=D*864e5;const h=Math.floor(d/36e5);d-=h*36e5;const m=Math.floor(d/6e4);const s=Math.floor((d-m*6e4)/1e3);
+    document.getElementById('d').textContent=D;document.getElementById('h').textContent=String(h).padStart(2,'0');document.getElementById('m').textContent=String(m).padStart(2,'0');document.getElementById('s').textContent=String(s).padStart(2,'0')}
+  tick();setInterval(tick,1000);
+
+  // rsvp
+  let v=null,n=1;const gn=document.getElementById('gn');
+  document.querySelectorAll('.choice button').forEach(b=>b.addEventListener('click',()=>{v=b.dataset.v;document.querySelectorAll('.choice button').forEach(x=>x.classList.toggle('on',x===b))}));
+  document.getElementById('plus').onclick=()=>{n=Math.min(10,n+1);gn.textContent=n};
+  document.getElementById('minus').onclick=()=>{n=Math.max(1,n-1);gn.textContent=n};
+  const esc=x=>x.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const API='https://script.google.com/macros/s/AKfycbxjBUZ_yICmwQOHdj4PuK-XtPBYaC_Pr5Br6HEvsXFTDF6vYFLToRlRKVgkSX7O5xpwmA/exec', EVENT='tural-nermin';
+  document.getElementById('f').addEventListener('submit',async e=>{e.preventDefault();const nm=document.getElementById('nm').value.trim();
+    if(!nm){document.getElementById('nm').focus();document.getElementById('nm').placeholder='Zəhmət olmasa, adınızı yazın';return}
+    if(!v){document.querySelector('.choice').animate([{transform:'translateX(-6px)'},{transform:'translateX(6px)'},{transform:'none'}],{duration:300});return}
+    const btn=document.getElementById('send');btn.disabled=true;btn.textContent='Göndərilir…';
+    let ok=true;try{await fetch(API,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({e:EVENT,name:nm,status:v,count:n})})}catch(err){ok=false}
+    const t=document.getElementById('thanks');
+    t.innerHTML=ok?`<b class="gold">${esc(nm)}</b>, təşəkkür edirik! 💛<br>Cavabınız ailəyə çatdırıldı.<br>${v==='no'?'Sizi çox xatırlayacağıq.':n+' nəfərlik yeriniz hazır olacaq.'}`
+      :`Bağlantı alınmadı. Zəhmət olmasa, bir az sonra yenidən cəhd edin.`;
+    t.classList.add('show');if(ok)document.getElementById('f').style.display='none';else{btn.disabled=false;btn.textContent='Cavabı göndər'}});
+})();
+</script>
+</body>
+</html>
