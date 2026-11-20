@@ -6,7 +6,7 @@ Nəticə reels/<slug>/result.json faylına yazılır.
 """
 import json, os, sys, time, urllib.parse, urllib.request, urllib.error
 
-GV = os.environ.get("GRAPH_VERSION") or "v23.0"
+GV = os.environ.get("GRAPH_VERSION") or "v25.0"
 G = f"https://graph.facebook.com/{GV}"
 TOKEN = os.environ["META_TOKEN"]
 IG_USER = os.environ["IG_USER_ID"]
