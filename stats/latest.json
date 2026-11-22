@@ -1,5 +1,5 @@
 {
-  "time_baku": "2026-11-22 20:05",
+  "time_baku": "2026-11-22 20:06",
   "instagram": {
     "account": {
       "id": "17841456769521256",
@@ -74,7 +74,44 @@
       "fan_count": 0,
       "id": "1407838499080197"
     },
-    "reels": [],
-    "reels_error": "Invalid OAuth 2.0 Access Token"
+    "reels": [
+      {
+        "link": "https://www.facebook.com/reel/1841287127205831/",
+        "created": "2026-11-22T16:02:55+0000",
+        "title": "Toy bitdi, sual bitmədi... Növbə SƏNDƏDİR 😅",
+        "insights_error": "(#100) The value must be a valid insights metric"
+      },
+      {
+        "link": "https://www.facebook.com/reel/2052110915502525/",
+        "created": "2026-11-21T15:53:51+0000",
+        "title": "Qohumlar şokda: dəvətnamə yox, SAYT! 😎",
+        "insights_error": "(#100) The value must be a valid insights metric"
+      },
+      {
+        "link": "https://www.facebook.com/reel/1158261776721244/",
+        "created": "2026-11-20T19:17:42+0000",
+        "title": "Toyda qohum masasında oturmusan, səbir 0%-dir... 😅",
+        "insights_error": "(#100) The value must be a valid insights metric"
+      },
+      {
+        "link": "https://www.facebook.com/reel/1483126777074196/",
+        "created": "2026-11-16T18:44:43+0000",
+        "title": "Saat 03:00. Slayd sayı: 0. Tanış gəlir? 😅",
+        "insights_error": "(#100) The value must be a valid insights metric"
+      },
+      {
+        "link": "https://www.facebook.com/reel/1845138956613880/",
+        "created": "2026-11-15T20:54:00+0000",
+        "title": "Gözünü çəkmə 👀 Hədiyyə hansı stəkanın altındadır?",
+        "insights_error": "(#100) The value must be a valid insights metric"
+      },
+      {
+        "link": "https://www.facebook.com/reel/4605655433027572/",
+        "created": "2026-11-10T17:46:45+0000",
+        "title": "Toyunuza kim gələcək? Artıq dəqiq biləcəksiniz 💌",
+        "insights_error": "(#100) The value must be a valid insights metric"
+      }
+    ],
+    "reels_error": null
   }
 }
