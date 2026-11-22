@@ -8,8 +8,8 @@ IG = os.environ["IG_USER_ID"]
 PAGE = os.environ["FB_PAGE_ID"]
 
 
-def get(path, **params):
-    params["access_token"] = TOKEN
+def get(path, token=None, **params):
+    params["access_token"] = token or TOKEN
     url = f"{G}/{path}?" + urllib.parse.urlencode(params)
     try:
         with urllib.request.urlopen(url, timeout=60) as r:
@@ -40,13 +40,14 @@ def ig_stats():
 
 
 def fb_stats():
-    page = get(PAGE, fields="name,followers_count,fan_count")
-    reels = get(f"{PAGE}/video_reels", fields="id,description,created_time,permalink_url", limit=20)
+    page = get(PAGE, fields="name,followers_count,fan_count,access_token")
+    pt = page.pop("access_token", None)
+    reels = get(f"{PAGE}/video_reels", token=pt, fields="id,description,created_time,permalink_url", limit=20)
     items = []
     for r in reels.get("data", []):
         it = {"link": "https://www.facebook.com" + r.get("permalink_url", "") if r.get("permalink_url", "").startswith("/") else r.get("permalink_url"),
               "created": r.get("created_time"), "title": (r.get("description") or "").split("\n")[0][:70]}
-        ins = get(f"{r['id']}/video_insights", metric="blue_reels_play_count,post_impressions_unique")
+        ins = get(f"{r['id']}/video_insights", token=pt, metric="blue_reels_play_count,post_impressions_unique")
         if "_error" in ins:
             it["insights_error"] = ins["_error"][:160]
         else:
