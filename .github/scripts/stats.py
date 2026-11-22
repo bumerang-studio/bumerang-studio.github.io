@@ -29,10 +29,10 @@ def ig_stats():
     for mm in media.get("data", []):
         it = {k: mm.get(k) for k in ("permalink", "timestamp", "like_count", "comments_count")}
         it["title"] = (mm.get("caption") or "").split("\n")[0][:70]
-        ins = get(f"{mm['id']}/insights", metric="views,reach,saved,shares,total_interactions")
-        if "_error" in ins:
-            it["insights_error"] = ins["_error"][:160]
-        else:
+        for met in ("views", "reach", "saved", "shares"):
+            ins = get(f"{mm['id']}/insights", metric=met)
+            if "_error" in ins:
+                it["insights_error"] = ins["_error"][:160]
             for row in ins.get("data", []):
                 it[row["name"]] = (row.get("values") or [{}])[0].get("value", row.get("total_value", {}).get("value"))
         items.append(it)
@@ -47,10 +47,10 @@ def fb_stats():
     for r in reels.get("data", []):
         it = {"link": "https://www.facebook.com" + r.get("permalink_url", "") if r.get("permalink_url", "").startswith("/") else r.get("permalink_url"),
               "created": r.get("created_time"), "title": (r.get("description") or "").split("\n")[0][:70]}
-        ins = get(f"{r['id']}/video_insights", token=pt, metric="blue_reels_play_count,post_impressions_unique")
-        if "_error" in ins:
-            it["insights_error"] = ins["_error"][:160]
-        else:
+        for met in ("blue_reels_play_count", "fb_reels_total_plays", "post_video_reach"):
+            ins = get(f"{r['id']}/video_insights", token=pt, metric=met)
+            if "_error" in ins:
+                it.setdefault("insights_error", {})[met] = ins["_error"][:120]
             for row in ins.get("data", []):
                 it[row["name"]] = (row.get("values") or [{}])[0].get("value")
         items.append(it)
@@ -73,8 +73,8 @@ def main():
                         it.get("like_count"), it.get("comments_count"), it.get("saved"), it.get("shares"), acc.get("followers_count")])
         pg = data["facebook"]["page"]
         for it in data["facebook"]["reels"]:
-            w.writerow([now, "facebook", it.get("title"), it.get("link"), it.get("blue_reels_play_count"),
-                        it.get("post_impressions_unique"), "", "", "", "", pg.get("followers_count")])
+            w.writerow([now, "facebook", it.get("title"), it.get("link"), it.get("blue_reels_play_count") or it.get("fb_reels_total_plays"),
+                        it.get("post_video_reach"), "", "", "", "", pg.get("followers_count")])
     print(json.dumps(data, ensure_ascii=False, indent=2)[:4000])
 
 
