@@ -1,0 +1,30 @@
+name: FB Reels gizlət
+
+on:
+  push:
+    branches: [main]
+    paths: ["fb-hide/request.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: fb-hide
+
+jobs:
+  hide:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gizlət
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          FB_PAGE_ID: ${{ vars.FB_PAGE_ID }}
+          GRAPH_VERSION: ${{ vars.GRAPH_VERSION }}
+        run: python3 .github/scripts/fb_hide.py
+      - name: Yadda saxla
+        run: |
+          git config user.name "bumerang-studio"
+          git config user.email "bumerang.studio.az@gmail.com"
+          git add fb-hide/result.json
+          git diff --cached --quiet || (git commit -m "FB gizlətmə nəticəsi [skip ci]" && git pull --rebase -q && git push)
