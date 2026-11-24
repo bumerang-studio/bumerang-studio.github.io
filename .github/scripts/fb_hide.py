@@ -29,8 +29,21 @@ def call(method, path, token, **params):
 
 
 def main():
-    keep = set(json.load(open("fb-hide/request.json", encoding="utf-8")).get("keep", []))
+    req = json.load(open("fb-hide/request.json", encoding="utf-8"))
+    keep = set(req.get("keep", []))
     pt = call("GET", PAGE, TOKEN, fields="access_token").get("access_token") or TOKEN
+    if req.get("verify"):
+        reels = call("GET", f"{PAGE}/video_reels", pt, fields="id,description,post_id", limit=50)
+        res = []
+        for v in reels.get("data", []):
+            pid = v.get("post_id"); full = pid if "_" in str(pid) else f"{PAGE}_{pid}"
+            res.append({"video_id": v["id"], "title": (v.get("description") or "")[:40],
+                        "post": call("GET", full, pt, fields="is_published,is_hidden,privacy"),
+                        "video": call("GET", v["id"], pt, fields="published,status")})
+        feed = call("GET", f"{PAGE}/published_posts", pt, fields="id,message", limit=50)
+        out = {"verify": res, "published_posts": [(p.get("id"), (p.get("message") or "")[:40]) for p in feed.get("data", [])], "feed_error": feed.get("_error")}
+        json.dump(out, open("fb-hide/result.json", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+        print(json.dumps(out, ensure_ascii=False, indent=2)); return
     reels = call("GET", f"{PAGE}/video_reels", pt, fields="id,description,post_id,created_time", limit=50)
     out = {"listed_error": reels.get("_error"), "items": []}
     for v in reels.get("data", []):
