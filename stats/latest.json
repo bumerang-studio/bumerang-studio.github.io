@@ -1,67 +1,19 @@
 {
-  "time_baku": "2026-11-23 10:19",
+  "time_baku": "2026-11-24 10:09",
   "instagram": {
     "account": {
       "id": "17841456769521256",
       "followers_count": 2,
-      "media_count": 7,
+      "media_count": 1,
       "username": "bumerang.studio"
     },
     "media": [
       {
-        "permalink": "https://www.instagram.com/reel/DgDMC0EpZ6p/",
-        "timestamp": "2026-11-22T16:02:48+0000",
+        "permalink": "https://www.instagram.com/reel/DgGHUPiKZte/",
+        "timestamp": "2026-11-23T19:19:12+0000",
         "like_count": 2,
         "comments_count": 0,
-        "title": "Toy bitdi, sual bitmədi... Növbə SƏNDƏDİR 😅",
-        "insights_error": "(#10) Application does not have permission for this action"
-      },
-      {
-        "permalink": "https://www.instagram.com/reel/DgAmNlGs1tM/",
-        "timestamp": "2026-11-21T15:53:44+0000",
-        "like_count": 2,
-        "comments_count": 0,
-        "title": "Qohumlar şokda: dəvətnamə yox, SAYT! 😎",
-        "insights_error": "(#10) Application does not have permission for this action"
-      },
-      {
-        "permalink": "https://www.instagram.com/reel/Df-Yvp-Blw4/",
-        "timestamp": "2026-11-20T19:17:34+0000",
-        "like_count": 2,
-        "comments_count": 0,
-        "title": "Toyda qohum masasında oturmusan, səbir 0%-dir... 😅",
-        "insights_error": "(#10) Application does not have permission for this action"
-      },
-      {
-        "permalink": "https://www.instagram.com/reel/Df0CL9uiWaj/",
-        "timestamp": "2026-11-16T18:47:59+0000",
-        "like_count": 3,
-        "comments_count": 0,
-        "title": "Saat 03:00. Slayd sayı: 0. Tanış gəlir? 😅",
-        "insights_error": "(#10) Application does not have permission for this action"
-      },
-      {
-        "permalink": "https://www.instagram.com/reel/DfxsAe1AMGR/",
-        "timestamp": "2026-11-15T20:55:36+0000",
-        "like_count": 2,
-        "comments_count": 7,
-        "title": "Gözünü çəkmə 👀 Hədiyyə hansı stəkanın altındadır?",
-        "insights_error": "(#10) Application does not have permission for this action"
-      },
-      {
-        "permalink": "https://www.instagram.com/reel/Dfm2vabuO3M/",
-        "timestamp": "2026-11-11T15:58:03+0000",
-        "like_count": 2,
-        "comments_count": 0,
-        "title": "Kağız dəvətnamə keçmişdə qaldı 💌",
-        "insights_error": "(#10) Application does not have permission for this action"
-      },
-      {
-        "permalink": "https://www.instagram.com/reel/DfkelsOiYJZ/",
-        "timestamp": "2026-11-10T17:48:18+0000",
-        "like_count": 3,
-        "comments_count": 0,
-        "title": "Toyunuza kim gələcək? Artıq dəqiq biləcəksiniz 💌",
+        "title": "Bibim 6 ildir küsülüdür 😤 Səbəb? Bir kağız...",
         "insights_error": "(#10) Application does not have permission for this action"
       }
     ],
@@ -70,11 +22,21 @@
   "facebook": {
     "page": {
       "name": "Bumerang",
-      "followers_count": 0,
-      "fan_count": 0,
+      "followers_count": 1,
+      "fan_count": 1,
       "id": "1407838499080197"
     },
     "reels": [
+      {
+        "link": "https://www.facebook.com/reel/2691334551301174/",
+        "created": "2026-11-23T19:19:20+0000",
+        "title": "Bibim 6 ildir küsülüdür 😤 Səbəb? Bir kağız...",
+        "insights_error": {
+          "blue_reels_play_count": "(#200) read_insights permission missing (https://developers.facebook.com/docs/permissions/reference/read_insights)",
+          "fb_reels_total_plays": "(#200) read_insights permission missing (https://developers.facebook.com/docs/permissions/reference/read_insights)",
+          "post_video_reach": "(#100) The value must be a valid insights metric"
+        }
+      },
       {
         "link": "https://www.facebook.com/reel/1841287127205831/",
         "created": "2026-11-22T16:02:55+0000",
