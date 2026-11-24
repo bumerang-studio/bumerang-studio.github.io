@@ -46,7 +46,15 @@ def main():
             if pid:
                 full = pid if "_" in str(pid) else f"{PAGE}_{pid}"
                 r = call("POST", full, pt, is_hidden="true")
-                it["action"] = "gizlədildi" if r.get("success") else f"xəta: {r.get('_error') or r}"
+                if r.get("success"):
+                    it["action"] = "gizlədildi"
+                else:
+                    r2 = call("POST", vid, pt, secret="true")
+                    if r2.get("success"):
+                        chk = call("GET", vid, pt, fields="published,secret")
+                        it["action"] = f"gizli edildi (secret) {chk}"
+                    else:
+                        it["action"] = f"xəta: {r.get('_error')} | secret: {r2.get('_error') or r2}"
             else:
                 it["action"] = "xəta: post_id tapılmadı"
         out["items"].append(it)
