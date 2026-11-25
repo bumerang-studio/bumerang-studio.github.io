@@ -1,13 +1,21 @@
 {
-  "time_baku": "2026-11-24 10:09",
+  "time_baku": "2026-11-25 10:10",
   "instagram": {
     "account": {
       "id": "17841456769521256",
       "followers_count": 2,
-      "media_count": 1,
+      "media_count": 2,
       "username": "bumerang.studio"
     },
     "media": [
+      {
+        "permalink": "https://www.instagram.com/reel/DgIYzIwh5hy/",
+        "timestamp": "2026-11-24T16:30:40+0000",
+        "like_count": 2,
+        "comments_count": 0,
+        "title": "Bu dəvətnamə deyil. Bu — SAYTDIR ✨",
+        "insights_error": "(#10) Application does not have permission for this action"
+      },
       {
         "permalink": "https://www.instagram.com/reel/DgGHUPiKZte/",
         "timestamp": "2026-11-23T19:19:12+0000",
@@ -27,6 +35,16 @@
       "id": "1407838499080197"
     },
     "reels": [
+      {
+        "link": "https://www.facebook.com/reel/1177563524609315/",
+        "created": "2026-11-24T16:30:48+0000",
+        "title": "Bu dəvətnamə deyil. Bu — SAYTDIR ✨",
+        "insights_error": {
+          "blue_reels_play_count": "(#200) read_insights permission missing (https://developers.facebook.com/docs/permissions/reference/read_insights)",
+          "fb_reels_total_plays": "(#200) read_insights permission missing (https://developers.facebook.com/docs/permissions/reference/read_insights)",
+          "post_video_reach": "(#100) The value must be a valid insights metric"
+        }
+      },
       {
         "link": "https://www.facebook.com/reel/2691334551301174/",
         "created": "2026-11-23T19:19:20+0000",
